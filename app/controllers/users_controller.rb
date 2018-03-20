@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:index]
   def index
     @users = User.paginate(page: params[:page])
   end
@@ -25,5 +26,13 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    end
+
+    # before filters
+    def logged_in_user
+      unless logged_in? # from sessions_helper
+        flash[:danger] = "Please log in"
+        redirect_to login_url
+      end
     end
 end
