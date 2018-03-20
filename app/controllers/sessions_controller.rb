@@ -8,9 +8,11 @@ class SessionsController < ApplicationController
       # log user in
     else
       # create error message
+      flash[:danger] = 'Invalid email/password combination'
       render 'new'
     end
   end
 
   def destroy
+  end
 end
