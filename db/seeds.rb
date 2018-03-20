@@ -8,6 +8,12 @@
 
 99.times do |n|
   name    = Faker::Pokemon.name
-  email   = "example-#{name}#{n}@manuel.uoo"
-  User.create!(email: email, username: name)
+  email   = "example-#{n}@manuel.uoo"
+  expert  = rand(2).zero?
+  User.create!( 
+    username: name, 
+    email: email,
+    password: "password",
+    password_confirmation: "password",
+    expert: expert)
 end
