@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  email: MyString
+  email: MyString@string.string
   username: MyString
   status: false
 
 two:
-  email: MyString
-  username: MyString
+  email: MyString2@string.string
+  username: MyString2
   status: false
