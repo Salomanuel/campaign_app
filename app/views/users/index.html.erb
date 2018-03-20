@@ -8,6 +8,8 @@
 			<th>Username</th>
 			<th>Email</th>
 			<th>Status</th>
+			<th>Profession</th>
+			<th>Service</th>
 			<th>Expert?</th>
 		</tr>
 	</thead>
@@ -24,6 +26,8 @@
 					 <% when nil %>		<%= "banned" %>
 					<% end %>
 				</td>
+				<td> soon </td>
+				<td> soon </td>
 				<td class=<%= user.expert? %>> <%= user.expert? %> </td>
 				<td> 
 					<% if current_user.expert? && !user.expert? %>
