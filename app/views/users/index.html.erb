@@ -1,10 +1,26 @@
 <h1>All Users</h1>
 
-<ul>
-<%= will_paginate %>
-	<% @users.each do |user| %>
-		<li> <%= user.username %> </li>
-	<% end %>
 
-</ul>
 <%= will_paginate %>
+<table>
+	<thead>
+		<tr>
+			<th>Username</th>
+			<th>Email</th>
+			<th>Expert?</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<td> <%= link_to user.username, user_path(user) %> </td>
+				<td> <%= user.email %> </td>
+				<td class=<%= user.expert? %>> <%= user.expert? %> </td>
+			</tr>
+		<% end %>
+	</tbody>
+
+</table>
+<%= will_paginate %>
+

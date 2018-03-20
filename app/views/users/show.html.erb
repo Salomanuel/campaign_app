@@ -1,1 +1,20 @@
-<%= @user.username %>, <%= @user.email %>
+<h1><%= @user.username %></h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Username</th>
+			<th>Email</th>
+			<th>Expert?</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td> <%= link_to @user.username, user_path(@user) %> </td>
+			<td> <%= @user.email %> </td>
+			<td class=<%= @user.expert? %>> <%= @user.expert? %> </td>
+		</tr>
+	</tbody> 
+
+</table>
