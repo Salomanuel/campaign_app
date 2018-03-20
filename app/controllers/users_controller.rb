@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.status = false
     if @user.save
       log_in @user
       flash[:success] = "Welcome in!"
