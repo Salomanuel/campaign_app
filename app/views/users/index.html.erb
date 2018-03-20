@@ -17,6 +17,15 @@
 				<td> <%= link_to user.username, user_path(user) %> </td>
 				<td> <%= user.email %> </td>
 				<td class=<%= user.expert? %>> <%= user.expert? %> </td>
+				<td> 
+					<% if current_user.expert? && !user.expert? %>
+						<%= form_for(user) do |f| %>
+							<%= f.label :expert, "upgrade user status" %>
+							<%= f.check_box :expert, :checked=> false %>
+							<%= f.submit "confirm" %>
+						<% end %>
+					<% end %>	
+			 </td>
 			</tr>
 		<% end %>
 	</tbody>
