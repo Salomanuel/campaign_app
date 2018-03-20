@@ -5,6 +5,12 @@ manuel:
   email:  manuel@salomanu.el
   password_digest: <%= User.digest('password') %>
 
+poor_user:
+  username: Poor
+  email: poor@arm.pobre
+  password_digest: <%= User.digest('password') %>
+
+
 one:
   email: MyString@string.string
   username: MyString
