@@ -6,6 +6,21 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.create!(
+  username: "Manuel",
+  email: "email@ema.il",
+  password: "password",
+  password_confirmation: "password",
+  expert: true,
+  status: true)
+
+User.create!(
+  username: "not_expert",
+  email: "email2@ema.il",
+  password: "password",
+  password_confirmation: "password",
+  expert: false,
+  status: true)
 
 
 99.times do |n|
@@ -14,9 +29,9 @@
   expert  = rand(2).zero?
 
   case rand(3)
-  when 0 then status = true
-  when 1 then status = false
-  when 2 then status = nil
+  when 0 then status = true   # qualified
+  when 1 then status = false  # not qualified
+  when 2 then status = nil    # banned
   end
 
   User.create!( 
