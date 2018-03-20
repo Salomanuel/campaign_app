@@ -7,6 +7,7 @@
 		<tr>
 			<th>Username</th>
 			<th>Email</th>
+			<th>Status</th>
 			<th>Expert?</th>
 		</tr>
 	</thead>
@@ -16,6 +17,13 @@
 			<tr>
 				<td> <%= link_to user.username, user_path(user) %> </td>
 				<td> <%= user.email %> </td>
+				<td> 
+					<% case user.status 
+						 when true %> 	<%= "qualified" %>
+					 <% when false %> <%= "not qualified" %>
+					 <% when nil %>		<%= "banned" %>
+					<% end %>
+				</td>
 				<td class=<%= user.expert? %>> <%= user.expert? %> </td>
 				<td> 
 					<% if current_user.expert? && !user.expert? %>
