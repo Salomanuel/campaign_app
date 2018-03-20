@@ -8,6 +8,6 @@
 
 99.times do |n|
   name    = Faker::Pokemon.name
-  email   = "example-#{name}@manuel.uoo"
+  email   = "example-#{name}#{n}@manuel.uoo"
   User.create!(email: email, username: name)
 end
