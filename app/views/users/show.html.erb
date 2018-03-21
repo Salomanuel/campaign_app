@@ -20,7 +20,7 @@
 </table>
 
 <h3>Campaign</h3>
-<% if @user.campaigns.nil? %>
+<% if @user.campaigns.first.nil? %>
 	<p>This user doesn't have any Campaigns yet</p>
 	<section class="campaign_form">
 		<%= render 'shared/campaign_form' %>
