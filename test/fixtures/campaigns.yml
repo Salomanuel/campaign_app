@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: 
+  purpose: 
+  estimated_duration: false
+  user: one
+
+two:
+  title: 
+  purpose: 
+  estimated_duration: false
+  user: two
