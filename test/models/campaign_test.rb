@@ -1,9 +1,28 @@
-require "test_helper"
+require 'test_helper'
 
-describe Campaign do
-  let(:campaign) { Campaign.new }
+class CampaignTest < ActiveSupport::TestCase
+  def setup
+    @user = users(:manuel)
 
-  it "must be valid" do
-    value(campaign).must_be :valid?
+    @campaign = Campaign.new(title: "Lorem ipsum", user_id: @user.id)
+  end
+
+  test "should be valid" do
+    assert @campaign.valid?
+  end
+
+  test "user id should be present" do
+    @campaign.user_id = nil
+    assert_not @campaign.valid?
+  end
+
+  test "title should be present" do 
+    @campaign.title = "    "
+    assert_not @campaign.valid?
+  end
+
+  test "title should be at most 140 chars" do
+    @campaign.title = "z" * 141
+    assert_not @campaign.valid?
   end
 end
