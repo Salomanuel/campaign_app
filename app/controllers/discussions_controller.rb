@@ -7,5 +7,6 @@ class DiscussionsController < ApplicationController
   def show
     @discussion = Discussion.find(params[:id])
     @campaigns = @discussion.campaigns
+    @comments = @discussion.comments
   end
 end

@@ -5,6 +5,7 @@
     <tr>
       <th>Title</th>
       <th>Campaigns</th>
+      <th>Comments</th>
     </tr>
   </thead>
 
@@ -12,9 +13,9 @@
     <% @discussions.each do |discussion| %>
     <tr>
       <td> <%= link_to discussion.title, discussion %> </td>
-      <td> <%= discussion.campaigns.count %>
+      <td> <%= discussion.campaigns.count %></td>
+      <td> <%= discussion.comments.count %></td>
     </tr>
     <% end %>
   </tbody> 
-
 </table>
