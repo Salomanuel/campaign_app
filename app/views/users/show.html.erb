@@ -27,5 +27,8 @@
 	</section>
 <% else %>
 	<%= link_to @user.campaigns.first.title, @user.campaigns.first %>
-	<p><%= link_to "delete campaign", "#" %></p>
+	<% if current_user?(@user.campaigns.first.user) %>
+		<span><%= link_to "delete campaign", @user.campaigns.first, 
+							method: :delete, %></span>
+	<% end %>
 <% end %>
