@@ -1,0 +1,8 @@
+<h1><%= @discussion.title %></h1>
+
+<h3>Campaigns</h3>
+<ul>
+  <% @campaigns.each do |campaign| %>
+    <li><%= link_to campaign.title, campaign %></li>
+  <% end %>
+</ul>
