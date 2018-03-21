@@ -1,9 +1,11 @@
 class CommentsController < ApplicationController
 
   def create
-    @comment = current_user.comments.build(comment_params)
+    @discussion = Discussion.new(params[:id])
+    # @comment = @discussion.comments.build(comment_params)
     # @comment.discussion = Discussion.first
-    @comment.discussion = @discussion
+    # @comment.discussion = @discussion
+    @comment = Comment.new(comment_params)
 
     if @comment.save
       flash[:success] = "Comment created!"
@@ -18,6 +20,6 @@ class CommentsController < ApplicationController
 
   private
     def comment_params
-      params.require(:comment).permit(:title, :discussion_id)
+      params.require(:comment).permit(:title, :user_id, :discussion_id)
     end
 end

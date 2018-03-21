@@ -32,6 +32,7 @@ class CampaignsController < ApplicationController
   def show
     @campaign = Campaign.find(params[:id])
     @comments = @campaign.comments
+    @comment = Comment.new
   end
 
   private
