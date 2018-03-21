@@ -22,6 +22,9 @@ User.create!(
   expert: false,
   status: true)
 
+title = Faker::Lorem.sentence(5)
+User.first.campaigns.create(title: title)
+
 
 99.times do |n|
   name    = Faker::Pokemon.name

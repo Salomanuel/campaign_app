@@ -1,1 +1,23 @@
 <h1>All Campaigns</h1>
+
+
+<%= will_paginate %>
+<table>
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Creator</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @campaigns.each do |campaign| %>
+			<tr>
+				<td> <%= link_to campaign.title, campaign_path(campaign) %> </td>
+				<td> <%= campaign.user.username %> </td>
+			</tr>
+		<% end %>
+	</tbody>
+
+</table>
+<%= will_paginate %>
