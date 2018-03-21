@@ -1,0 +1,10 @@
+<%= form_for(@new_campaign) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+
+	<%= f.label :purpose %>
+	<%= f.text_field :purpose %>
+
+	<%= f.submit "Create Campaign", class: "btn btn-primary" %>
+<% end %>
