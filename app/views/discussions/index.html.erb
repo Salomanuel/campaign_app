@@ -1,0 +1,18 @@
+<h1>Discussions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>title</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @discussions.each do |discussion| %>
+    <tr>
+      <td> <%= link_to discussion.title, discussion %> </td>
+    </tr>
+    <% end %>
+  </tbody> 
+
+</table>

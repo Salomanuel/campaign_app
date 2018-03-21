@@ -14,5 +14,5 @@ Rails.application.routes.draw do
 
   resources :users
   resources :campaigns
-  resources :discussions, only: [:index, :create]
+  resources :discussions, only: [:index, :create, :show]
 end
