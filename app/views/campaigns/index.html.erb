@@ -14,7 +14,7 @@
 		<% @campaigns.each do |campaign| %>
 			<tr>
 				<td> <%= link_to campaign.title, campaign_path(campaign) %> </td>
-				<td> <%= campaign.user.username %> </td>
+				<td> <%= link_to campaign.user.username, campaign.user %> </td>
 			</tr>
 		<% end %>
 	</tbody>
