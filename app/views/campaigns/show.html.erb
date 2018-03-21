@@ -1,0 +1,22 @@
+<h1>Campaign <%= @campaign.title %></h1>
+
+<h3>Otherview</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Purpose</th>
+      <th>Creator</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td> <%= @campaign.title %> </td>
+      <td> <%= @campaign.purpose %> </td>
+      <td> <%= link_to @campaign.user.username, @campaign.user %> </td>
+    </tr>
+  </tbody> 
+</table>
+
+<h3>Discussions</h3>

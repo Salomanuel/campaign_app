@@ -29,6 +29,10 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def show
+    @campaign = Campaign.find(params[:id])
+  end
+
   private
     def campaign_params
       params.require(:campaign).permit(:title, :purpose)
