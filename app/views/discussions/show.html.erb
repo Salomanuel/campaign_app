@@ -1,8 +1,21 @@
 <h1><%= @discussion.title %></h1>
 
 <h3>Campaigns</h3>
-<ul>
-  <% @campaigns.each do |campaign| %>
-    <li><%= link_to campaign.title, campaign %></li>
-  <% end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Creator</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @campaigns.each do |campaign| %>    
+    <tr>
+      <td> <%= link_to campaign.title, campaign %> </td>
+      <td> <%= link_to campaign.user.username, campaign.user %>
+    </tr>
+    <% end %>
+  </tbody> 
+
+</table>
