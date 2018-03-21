@@ -3,7 +3,7 @@ require 'test_helper'
 class CampaignTest < ActiveSupport::TestCase
   def setup
     @user = users(:manuel)
-    @campaign = @user.campaigns.build(title: "Lorem ipsum")
+    @campaign = @user.campaigns.build(title: "Lorem ipsum", purpose: "doge")
   end
 
   test "should be valid" do

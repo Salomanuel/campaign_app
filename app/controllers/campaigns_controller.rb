@@ -21,9 +21,11 @@ class CampaignsController < ApplicationController
     @campaign = current_user.campaigns.build(campaign_params)
     if @campaign.save
       flash[:success] = "Campaign created!"
+      puts "CULOOOO\n\n\n"
       redirect_to current_user
     else
-      render 'static_pages/home'
+      flash[:danger] = "we may have a problem"
+      render 'new'
     end
   end
 
@@ -34,6 +36,6 @@ class CampaignsController < ApplicationController
 
     def correct_user
       @campaign = current_user.campaigns.first
-      redirect_to current_user if @campaign.nil?
+      # redirect_to current_user if @campaign.nil?
     end
 end
