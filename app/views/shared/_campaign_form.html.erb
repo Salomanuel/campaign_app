@@ -10,5 +10,10 @@
   <%= f.select(:discussion_id, 
   options_for_select(@discussions), class: "form-control") %>
 
+  <p>
+    <%= f.label :tag_list %>
+    <%= f.text_field :tag_list %>
+  </p>
+
 	<%= f.submit "Create Campaign", class: "btn btn-primary" %>
 <% end %>
