@@ -24,4 +24,9 @@ class CampaignTest < ActiveSupport::TestCase
     @campaign.title = "z" * 141
     assert_not @campaign.valid?
   end
+
+  test "purpose should be present" do
+    @campaign.purpose = "   "
+    assert_not @campaign.valid?
+  end
 end
