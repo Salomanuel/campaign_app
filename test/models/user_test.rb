@@ -84,7 +84,8 @@ class UserTest < ActiveSupport::TestCase
 
   test "associated campaigns should be destroyed" do
     @user.save
-    @user.campaigns.create(title: "Lorem", purpose:"turtles")
+    @discussion = Discussion.create(title: "Discuss")
+    @user.campaigns.create(title: "Lorem", purpose:"turtles", discussion_id: @discussion.id)
     assert_difference "Campaign.count", -1 do
       @user.destroy
     end
