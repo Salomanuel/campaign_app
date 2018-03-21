@@ -30,6 +30,7 @@
 
   <%= f.label           :title %>
   <%= f.text_field      :title, class: 'form-control' %>
-
+  <%= f.hidden_field    :user_id, value: current_user.id %>
+  <%= f.hidden_field    :campaign_id, value: @campaign.id %>
   <%= f.submit "Comment", class: "btn btn-primary" %>
 <% end %>
