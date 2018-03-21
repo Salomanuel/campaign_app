@@ -1,34 +1,18 @@
-<h1>Campaign!</h1>
+<h1><%= @campaign.title %></h1>
+
+<h4>belonging to <%= link_to @campaign.discussion.title, @campaign.discussion %></h4>
 
 <p>
-  Tags:
-  <% @campaign.tags.each do |tag| %>
-    <%= link_to tag.name, tag_path(tag) %>
+  <% if @campaign.tags.count < 1 %>
+    <p>no tags</p>
+  <% else %>
+    Tags:
+    <% @campaign.tags.each do |tag| %>
+      <%= link_to tag.name, tag_path(tag) %>
+    <% end %>
   <% end %>
 </p>
 
-<h3>Comments</h3>
-<% if @comments.count < 1 %>
-  <p>No Comments yet</p>
-<% else %>
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Creator</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @comments.each do |comment| %>    
-      <tr>
-        <td> <%= link_to comment.title, comment %> </td>
-        <td> <%= link_to comment.user.username, comment.user %>
-      </tr>
-      <% end %>
-    </tbody> 
-  </table>
-<% end %>
 
 <h3>Write Comment</h3>
 <%= form_for(@comment) do |f| %>
@@ -40,4 +24,16 @@
   <%= f.hidden_field    :user_id, value: current_user.id %>
   <%= f.hidden_field    :campaign_id, value: @campaign.id %>
   <%= f.submit "Comment", class: "btn btn-primary" %>
+<% end %>
+
+<h3>Comments</h3>
+
+<% if @comments.count < 1 %>
+  <p>no comments yet</p>
+<% else %>
+  <% @comments.each do |comment| %>
+    <h5> on <%= comment.created_at.strftime("%a, %d %b at %H:%M") %></h5>
+    <h4><%= link_to comment.user.username, comment.user %> said:</h4>
+    <p><%= comment.title %></p>
+  <% end %>
 <% end %>

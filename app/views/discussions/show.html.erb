@@ -38,8 +38,12 @@
 
 <h3>Comments</h3>
 
-<% @comments.each do |comment| %>
-  <h5> on <%= comment.created_at.strftime("%a, %d %b at %H:%M") %></h5>
-  <h4><%= link_to comment.user.username, comment.user %> said:</h4>
-  <p><%= comment.title %></p>
+<% if @comments.count < 1 %>
+  <p>no comments yet</p>
+<% else %>
+  <% @comments.each do |comment| %>
+    <h5> on <%= comment.created_at.strftime("%a, %d %b at %H:%M") %></h5>
+    <h4><%= link_to comment.user.username, comment.user %> said:</h4>
+    <p><%= comment.title %></p>
+  <% end %>
 <% end %>
