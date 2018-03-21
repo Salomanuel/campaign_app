@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180321212002) do
+ActiveRecord::Schema.define(version: 20180321212401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20180321212002) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.bigint "campaign_id"
+    t.index ["campaign_id"], name: "index_comments_on_campaign_id"
     t.index ["discussion_id"], name: "index_comments_on_discussion_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -62,6 +64,7 @@ ActiveRecord::Schema.define(version: 20180321212002) do
   add_foreign_key "campaigns", "comments"
   add_foreign_key "campaigns", "discussions"
   add_foreign_key "campaigns", "users"
+  add_foreign_key "comments", "campaigns"
   add_foreign_key "comments", "discussions"
   add_foreign_key "comments", "users"
   add_foreign_key "users", "comments"
