@@ -3,7 +3,8 @@
 <table>
   <thead>
     <tr>
-      <th>title</th>
+      <th>Title</th>
+      <th>Campaigns</th>
     </tr>
   </thead>
 
@@ -11,6 +12,7 @@
     <% @discussions.each do |discussion| %>
     <tr>
       <td> <%= link_to discussion.title, discussion %> </td>
+      <td> <%= discussion.campaigns.count %>
     </tr>
     <% end %>
   </tbody> 
