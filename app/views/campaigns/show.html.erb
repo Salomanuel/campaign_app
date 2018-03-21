@@ -1,5 +1,12 @@
 <h1>Campaign!</h1>
 
+<p>
+  Tags:
+  <% @campaign.tags.each do |tag| %>
+    <%= link_to tag.name, tag_path(tag) %>
+  <% end %>
+</p>
+
 <h3>Comments</h3>
 <% if @comments.count < 1 %>
   <p>No Comments yet</p>
