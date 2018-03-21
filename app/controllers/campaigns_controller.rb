@@ -1,5 +1,6 @@
 class CampaignsController < ApplicationController
   before_action :logged_in_user, only: [:index, :create, :destroy]
+  before_action :correct_user, only: [:destroy]
   # add filters to campaign creation for expert users 
 
   def index
@@ -7,6 +8,9 @@ class CampaignsController < ApplicationController
   end
 
   def destroy
+    @campaign.destroy
+    flash[:success] = "Campaign deleted"
+    redirect_to current_user
   end
 
   def new
@@ -17,7 +21,7 @@ class CampaignsController < ApplicationController
     @campaign = current_user.campaigns.build(campaign_params)
     if @campaign.save
       flash[:success] = "Campaign created!"
-      redirect_to campaigns_path
+      redirect_to current_user
     else
       render 'static_pages/home'
     end
@@ -26,5 +30,10 @@ class CampaignsController < ApplicationController
   private
     def campaign_params
       params.require(:campaign).permit(:title, :purpose)
+    end
+
+    def correct_user
+      @campaign = current_user.campaigns.first
+      redirect_to current_user_path if @campaign.nil?
     end
 end
