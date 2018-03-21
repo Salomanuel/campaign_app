@@ -1,6 +1,6 @@
 class CampaignsController < ApplicationController
   before_action :logged_in_user, only: [:index, :create, :destroy]
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:destroy, :create]
   # add filters to campaign creation for expert users 
 
   def index
@@ -34,6 +34,6 @@ class CampaignsController < ApplicationController
 
     def correct_user
       @campaign = current_user.campaigns.first
-      redirect_to current_user_path if @campaign.nil?
+      redirect_to current_user if @campaign.nil?
     end
 end
