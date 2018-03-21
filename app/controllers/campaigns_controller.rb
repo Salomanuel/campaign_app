@@ -9,6 +9,10 @@ class CampaignsController < ApplicationController
   def destroy
   end
 
+  def new
+    @campaign = Campaign.new
+  end
+
   def create
     @campaign = current_user.campaigns.build(campaign_params)
     if @campaign.save
@@ -17,10 +21,10 @@ class CampaignsController < ApplicationController
     else
       render 'static_pages/home'
     end
-
-    private
-      def campaign_params
-        params.require(:campaign).permit(:title, :purpose)
-      end
   end
+
+  private
+    def campaign_params
+      params.require(:campaign).permit(:title, :purpose)
+    end
 end
