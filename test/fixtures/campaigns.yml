@@ -1,13 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+
 one:
-  title: 
-  purpose: 
+  title: "fixture one"
+  purpose: "unlimited"
   estimated_duration: false
-  user: one
+  user: <%= User.last %>
 
 two:
-  title: 
-  purpose: 
+  title: "such campaign"
+  purpose: "doge rights"
   estimated_duration: false
-  user: two
+  user: <%= User.all[1] %>
