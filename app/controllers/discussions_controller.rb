@@ -8,5 +8,6 @@ class DiscussionsController < ApplicationController
     @discussion = Discussion.find(params[:id])
     @campaigns = @discussion.campaigns
     @comments = @discussion.comments
+    @comment = Comment.new
   end
 end
