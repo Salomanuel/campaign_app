@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   resources :campaigns
   resources :discussions, only: [:index, :create, :show]
   resources :comments
+  resources :tags
 end
