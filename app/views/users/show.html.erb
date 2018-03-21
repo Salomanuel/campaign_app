@@ -21,6 +21,7 @@
 <h3>Campaign</h3>
 <% if @user.campaigns.first.nil? %>
 	<p>This user doesn't have any Campaigns yet</p>
+  <h3>Create Campaign</h3>
 	<section class="campaign_form">
 		<%= render 'shared/campaign_form' %>
 	</section>
@@ -37,7 +38,7 @@
   <tbody>
     <tr>
       <td> <%= link_to @user.campaigns.first.title, @user.campaigns.first %> </td>
-      <td> <%= @user.campaigns.first.discussion.title %> </td>
+      <td> <%= link_to @user.campaigns.first.discussion.title, @user.campaigns.first.discussion %> </td>
       <td> 
         <%= link_to "delete campaign", @user.campaigns.first, 
               method: :delete,
