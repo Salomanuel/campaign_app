@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     # lists the users campaigns (that should be just one actually)
     # for new campaign
     @campaign = current_user.campaigns.build if logged_in?
+    @discussions = Discussion.all.map{ |a| [a.title, a.id] }
   end
 
   def new

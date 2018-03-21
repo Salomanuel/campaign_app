@@ -16,7 +16,6 @@
 			<td class=<%= @user.expert? %>> <%= @user.expert? %> </td>
 		</tr>
 	</tbody> 
-
 </table>
 
 <h3>Campaign</h3>
@@ -26,11 +25,30 @@
 		<%= render 'shared/campaign_form' %>
 	</section>
 <% else %>
-	<%= link_to @user.campaigns.first.title, @user.campaigns.first %>
-	<% if current_user?(@user.campaigns.first.user) %>
-		<span><%= link_to "delete campaign", @user.campaigns.first, 
-							method: :delete,
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Discussion</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td> <%= link_to @user.campaigns.first.title, @user.campaigns.first %> </td>
+      <td> <%= @user.campaigns.first.discussion.title %> </td>
+      <td> 
+        <%= link_to "delete campaign", @user.campaigns.first, 
+              method: :delete,
               data: { confirm: "You sure?" } %>
+      <td>
+    </tr>
+  </tbody> 
+</table>
+	
+	<% if current_user?(@user.campaigns.first.user) %>
+		<span>
     </span>
 	<% end %>
 <% end %>

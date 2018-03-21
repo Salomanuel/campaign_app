@@ -19,9 +19,9 @@ class CampaignsController < ApplicationController
 
   def create
     @campaign = current_user.campaigns.build(campaign_params)
+    @discussions = Discussion.all.map{ |a| [a.title, a.id] }
     if @campaign.save
       flash[:success] = "Campaign created!"
-      puts "CULOOOO\n\n\n"
       redirect_to current_user
     else
       flash[:danger] = "we may have a problem"
