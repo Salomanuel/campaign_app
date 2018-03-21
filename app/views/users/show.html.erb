@@ -20,7 +20,7 @@
 </table>
 
 <h3>Campaign</h3>
-<% if @campaign.nil? %>
+<% if @campaign.first.nil? %>
 	<p>This user doesn't have any Campaigns yet</p>
 <% else %>
 	<%= link_to @campaign.first.title, @campaign.first %>
