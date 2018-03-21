@@ -6,8 +6,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @campaign = @user.campaigns
-    @new_campaign = current_user.campaigns.build if logged_in?
+    # lists the users campaigns (that should be just one actually)
+    @campaigns = @user.campaigns
+    # for new campaign
+    @campaign = current_user.campaigns.build if logged_in?
   end
 
   def new
