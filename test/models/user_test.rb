@@ -81,4 +81,12 @@ class UserTest < ActiveSupport::TestCase
     @user.password = "a" * 5
     assert_not @user.valid?
   end
+
+  test "associated campaigns should be destroyed" do
+    @user.save
+    @user.campaigns.create(title: "Lorem")
+    assert_difference "Campaign.count", -1 do
+      @user.destroy
+    end
+  end
 end
