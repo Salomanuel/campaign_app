@@ -54,13 +54,20 @@ end
 
 # campaigns
 
-# title = Faker::Lorem.sentence(5)
-# User.first.campaigns.create(title: title,
-#                             purpose: "multipurpose",
-#                             discussion_id: 1 )
+title = Faker::Lorem.sentence(5)
+User.first.build_campaign(title: title,
+                          purpose: "multipurpose",
+                          discussion_id: 1 )
 
-# 10.times do |i|
-#   User.all[i].campaigns.create(title: "Campaign #{i}",
-#                                purpose: "multipurpose",
-#                                discussion_id: rand(10) )
-# end
+# we only want expert users that don't have campaigns yet
+10.times do |i|
+  user = User.last
+  unless user.expert? and user.campaign.nil?
+    user = User.all[rand(User.count)]
+  end
+  Campaign.create( title: "Campaign #{i}",
+                   purpose: "multipurpose",
+                   estimated_duration: false,
+                   discussion_id: rand(10),
+                   user: user )
+end
