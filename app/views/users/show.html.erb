@@ -54,34 +54,29 @@
       <% end %>
     <% end %>
   <% else %>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Discussion</th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr>
-        <td> <%= link_to @user.campaign.title, @user.campaign %> </td>
-        <td> <%= link_to @user.campaign.discussion.title, @user.campaign.discussion %> </td>
-        <td> 
-          <%= link_to "delete campaign", @user.campaign, 
-                method: :delete,
-                data: { confirm: "You sure?" } %>
-        <td>
-      </tr>
-    </tbody> 
-  </table>
-  	<% if current_user?(@user.campaign.user) %>
-  		<span>
-      </span>
-  	<% end %>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Discussion</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> <%= link_to @user.campaign.title, @user.campaign %> </td>
+          <td> <%= link_to @user.campaign.discussion.title, @user.campaign.discussion %> </td>
+          <td> 
+              <%= link_to "delete campaign", @user.campaign, 
+                  method: :delete,
+                  data: { confirm: "You sure?" } %> 
+          </td>
+        </tr>
+      </tbody> 
+    </table>
   <% end %>
 <% else %>
-<h3>Discussion</h3>
+  <h3>Discussion</h3>
   <% if @user.discussion.nil? %>
     <p>This user doesn't have a Discussion yet</p>
     <% if @user == current_user %>

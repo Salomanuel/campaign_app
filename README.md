@@ -17,6 +17,7 @@ It has a seeded database
 
 ## To Improve
 
+- SUPER BUG `campaigns` get deleted while opening a `novice User#show` page, I need more time!!!
 - restrict the `routes` to the minimum (I lazily used `:resources` for everything (especially for `Users` and `Campaigns`))
 - remove unnecessary `controllers`
 - refactor `User` and `Campaign` `#index` views with partials

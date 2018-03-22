@@ -6,9 +6,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # lists the users campaigns (that should be just one actually)
-    # for new campaign
-    @campaign = current_user.build_campaign if logged_in?
+    # # lists the users campaigns (that should be just one actually)
+    # # for new campaign
+    @campaign = current_user.build_campaign if @user.campaign.nil?
     @discussions = Discussion.all.map{ |a| [a.title, a.id] }
     @durations = [["within one week", true],["within one month", false],["within three months", nil]]
     @discussion = current_user.build_discussion if current_user.discussion.nil?
