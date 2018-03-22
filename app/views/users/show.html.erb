@@ -49,9 +49,7 @@
   <% if @user.campaigns.first.nil? %>
   	<p>This user doesn't have any Campaigns yet</p>
     <h3>Create Campaign</h3>
-  	<section class="campaign_form">
-  		<%= render 'shared/campaign_form' %>
-  	</section>
+		<%= render 'shared/campaign_form' %>
   <% else %>
   <table>
     <thead>
@@ -82,5 +80,11 @@
   <% end %>
 <% else %>
 <h3>Discussion</h3>
-  
+  <% if @user.discussion.nil? %>
+    <p>This user doesn't have any Discussions yet</p>
+    <h3>Create Discussion</h3>
+    <%= render 'shared/discussion_form' %>
+  <% else %>
+    <p>much discussions</p>
+  <% end %>
 <% end %>
