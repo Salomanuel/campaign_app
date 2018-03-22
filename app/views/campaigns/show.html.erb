@@ -2,6 +2,13 @@
 
 <h4>belonging to <%= link_to @campaign.discussion.title, @campaign.discussion %></h4>
 <h4>Purpose: <%= @campaign.purpose %> </h4>
+<h4>Estimated Duration: 
+  <% case @campaign.estimated_duration 
+     when true %>   <%= "within one week" %>
+   <% when false %> <%= "within one month" %>
+   <% when nil %>   <%= "within three months" %>
+  <% end %>
+</h4>
 
 <p>
   <% if @campaign.tags.count < 1 %>
