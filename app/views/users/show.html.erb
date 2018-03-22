@@ -79,7 +79,7 @@
 <% else %>
 <h3>Discussion</h3>
   <% if @user.discussion.nil? %>
-    <p>This user doesn't have any Discussions yet</p>
+    <p>This user doesn't have a Discussion yet</p>
     <% if @user == current_user %>
       <h3>Create Discussion</h3>
       <%= render 'shared/discussion_form' %>
