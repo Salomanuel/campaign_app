@@ -42,15 +42,14 @@
       </tr>
     </tbody> 
   </table>
-<% end %>
-
-<% if current_user.expert %>
   <h3>Campaign</h3>
   <% if @user.campaigns.first.nil? %>
-  	<p>This user doesn't have any Campaigns yet</p>
-    <h3>Create Campaign</h3>
-		<%= render 'shared/campaign_form' %>
-  <% else %>
+    <p>This user doesn't have any Campaigns yet</p>
+    <% if current_user.expert %>
+      <h3>Create Campaign</h3>
+      <%= render 'shared/campaign_form' %>
+  <% end %>
+<% else %>
   <table>
     <thead>
       <tr>
@@ -72,7 +71,6 @@
       </tr>
     </tbody> 
   </table>
-  	
   	<% if current_user?(@user.campaigns.first.user) %>
   		<span>
       </span>
@@ -85,6 +83,17 @@
     <h3>Create Discussion</h3>
     <%= render 'shared/discussion_form' %>
   <% else %>
-    <p>much discussions</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> <%= link_to @user.discussion.title, @user.discussion %> </td>
+        </tr>
+      </tbody> 
+    </table>
   <% end %>
 <% end %>
