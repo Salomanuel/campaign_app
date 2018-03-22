@@ -1,6 +1,7 @@
 <h1><%= @campaign.title %></h1>
 
 <h4>belonging to <%= link_to @campaign.discussion.title, @campaign.discussion %></h4>
+<h4>Purpose: <%= @campaign.purpose %> </h4>
 
 <p>
   <% if @campaign.tags.count < 1 %>
