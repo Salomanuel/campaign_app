@@ -1,0 +1,7 @@
+<h1>Campaigns Tagged with <%= @tag.name %></h1>
+
+<ul>
+  <% @tag.campaigns.each do |campaign| %>
+    <li><%= link_to campaign.title, campaign %></li>
+  <% end %>
+</ul>

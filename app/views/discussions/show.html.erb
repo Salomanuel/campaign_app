@@ -1,0 +1,49 @@
+<h1><%= @discussion.title %></h1>
+
+<h3>Campaigns</h3>
+<% if @campaigns.count < 1 %>
+  <p>No Campaigns yet</p>
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Creator</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @campaigns.each do |campaign| %>    
+      <tr>
+        <td> <%= link_to campaign.title, campaign %> </td>
+        <td> <%= link_to campaign.user.username, campaign.user %>
+      </tr>
+      <% end %>
+    </tbody> 
+  </table>
+<% end %>
+
+
+<h3>Write Comment</h3>
+<%= form_for(@comment) do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label           :title %>
+  <%= f.text_field      :title, class: 'form-control' %>
+  <%= f.hidden_field    :user_id, value: current_user.id %>
+  <%= f.hidden_field    :discussion_id, value: @discussion.id %>
+  <%= f.submit "Comment", class: "btn btn-primary" %>
+<% end %>
+
+<h3>Comments</h3>
+
+<% if @comments.count < 1 %>
+  <p>no comments yet</p>
+<% else %>
+  <% @comments.each do |comment| %>
+    <h5> on <%= comment.created_at.strftime("%a, %d %b at %H:%M") %></h5>
+    <h4><%= link_to comment.user.username, comment.user %> said:</h4>
+    <p><%= comment.title %></p>
+  <% end %>
+<% end %>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index]
+  before_action :logged_in_user, only: [:index, :show]
   def index
     @users = User.paginate(page: params[:page])
   end
@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     # lists the users campaigns (that should be just one actually)
     # for new campaign
     @campaign = current_user.campaigns.build if logged_in?
+    @discussions = Discussion.all.map{ |a| [a.title, a.id] }
   end
 
   def new

@@ -3,7 +3,8 @@ require 'test_helper'
 class CampaignTest < ActiveSupport::TestCase
   def setup
     @user = users(:manuel)
-    @campaign = @user.campaigns.build(title: "Lorem ipsum", purpose: "doge")
+    @discussion = Discussion.create(title: "Discuss")
+    @campaign = @user.campaigns.build(title: "Lorem ipsum", purpose: "doge", discussion_id: @discussion.id)
   end
 
   test "should be valid" do

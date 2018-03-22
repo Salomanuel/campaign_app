@@ -6,6 +6,7 @@
 			<th>Username</th>
 			<th>Email</th>
 			<th>Expert?</th>
+      <th>Status</th>
 		</tr>
 	</thead>
 
@@ -14,23 +15,69 @@
 			<td> <%= link_to @user.username, user_path(@user) %> </td>
 			<td> <%= @user.email %> </td>
 			<td class=<%= @user.expert? %>> <%= @user.expert? %> </td>
+      <td> 
+        <% case @user.status 
+           when true %>   <%= "qualified" %>
+         <% when false %> <%= "not qualified" %>
+         <% when nil %>   <%= "banned" %>
+        <% end %>
+      </td>
 		</tr>
 	</tbody> 
-
 </table>
 
-<h3>Campaign</h3>
-<% if @user.campaigns.first.nil? %>
-	<p>This user doesn't have any Campaigns yet</p>
-	<section class="campaign_form">
-		<%= render 'shared/campaign_form' %>
-	</section>
-<% else %>
-	<%= link_to @user.campaigns.first.title, @user.campaigns.first %>
-	<% if current_user?(@user.campaigns.first.user) %>
-		<span><%= link_to "delete campaign", @user.campaigns.first, 
-							method: :delete,
-              data: { confirm: "You sure?" } %>
-    </span>
-	<% end %>
+<% if @user.expert %>
+  <table>
+    <thead>
+      <tr>
+        <th>Profession</th>
+        <th>Service</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td> </td>
+        <td> </td>
+      </tr>
+    </tbody> 
+  </table>
+<% end %>
+
+<% if current_user.expert %>
+  <h3>Campaign</h3>
+  <% if @user.campaigns.first.nil? %>
+  	<p>This user doesn't have any Campaigns yet</p>
+    <h3>Create Campaign</h3>
+  	<section class="campaign_form">
+  		<%= render 'shared/campaign_form' %>
+  	</section>
+  <% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Discussion</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td> <%= link_to @user.campaigns.first.title, @user.campaigns.first %> </td>
+        <td> <%= link_to @user.campaigns.first.discussion.title, @user.campaigns.first.discussion %> </td>
+        <td> 
+          <%= link_to "delete campaign", @user.campaigns.first, 
+                method: :delete,
+                data: { confirm: "You sure?" } %>
+        <td>
+      </tr>
+    </tbody> 
+  </table>
+  	
+  	<% if current_user?(@user.campaigns.first.user) %>
+  		<span>
+      </span>
+  	<% end %>
+  <% end %>
 <% end %>

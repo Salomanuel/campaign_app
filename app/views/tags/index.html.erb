@@ -1,0 +1,48 @@
+<h1>All Tags</h1>
+
+
+<h3>Search for a Tag</h3>
+<%= form_tag("/tags", method: "get") do %>
+  <%= label_tag(:tag_name) %>
+  <%= text_field_tag(:tag_name) %>
+  <%= hidden_field_tag(:submitted, true) %>
+  <%= submit_tag("search") %>
+<% end %>
+
+<% if params[:submitted] %>
+  <h3>Search Results</h3>
+  <% if @search_results %>
+    <table>
+        <thead>
+          <tr class="active">
+            <th>title</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td><%= link_to @search_results.name, @search_result %></td>
+            </tr>
+        </tbody>
+      </table>
+  <% else %>
+    <p>No tags found</p>
+  <% end %>
+<% end %>
+
+
+<h3>All Tags</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td> <%= link_to tag.name, tag %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

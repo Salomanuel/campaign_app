@@ -19,9 +19,9 @@ class CampaignsController < ApplicationController
 
   def create
     @campaign = current_user.campaigns.build(campaign_params)
+    @discussions = Discussion.all.map{ |a| [a.title, a.id] }
     if @campaign.save
       flash[:success] = "Campaign created!"
-      puts "CULOOOO\n\n\n"
       redirect_to current_user
     else
       flash[:danger] = "we may have a problem"
@@ -29,9 +29,15 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def show
+    @campaign = Campaign.find(params[:id])
+    @comments = @campaign.comments
+    @comment = Comment.new
+  end
+
   private
     def campaign_params
-      params.require(:campaign).permit(:title, :purpose)
+      params.require(:campaign).permit(:title, :purpose, :discussion_id, :tag_list)
     end
 
     def correct_user
