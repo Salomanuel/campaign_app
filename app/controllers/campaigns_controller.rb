@@ -37,7 +37,7 @@ class CampaignsController < ApplicationController
 
   private
     def campaign_params
-      params.require(:campaign).permit(:title, :purpose, :discussion_id, :tag_list)
+      params.require(:campaign).permit(:title, :purpose, :discussion_id, :tag_list, :estimated_duration)
     end
 
     def correct_user
