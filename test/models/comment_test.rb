@@ -1,9 +1,16 @@
 require "test_helper"
 
-describe Comment do
-  let(:comment) { Comment.new }
 
-  it "must be valid" do
-    value(comment).must_be :valid?
+class CommentTest < ActiveSupport::TestCase
+  def setup
+    @user = users(:manuel)
+    @discussion = Discussion.create(title: "Discuss")
+    @comment = @discussion.comments.build(user: @user)
+  end
+
+  describe "comment" do
+    it "must be valid" do
+      @comment.must_be :valid?
+    end
   end
 end
