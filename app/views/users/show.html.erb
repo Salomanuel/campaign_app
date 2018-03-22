@@ -43,13 +43,17 @@
     </tbody> 
   </table>
   <h3>Campaign</h3>
-  <% if @user.campaigns.first.nil? %>
+  <% if @user.campaign.nil? %>
     <p>This user doesn't have any Campaigns yet</p>
     <% if current_user.expert %>
-      <h3>Create Campaign</h3>
-      <%= render 'shared/campaign_form' %>
-  <% end %>
-<% else %>
+      <% if Discussion.all.count > 0 %>
+        <h3>Create Campaign</h3>
+        <%= render 'shared/campaign_form' %>
+      <% else %>
+        <p>But we may need at least a Discussion to create a Campaign</p>
+      <% end %>
+    <% end %>
+  <% else %>
   <table>
     <thead>
       <tr>
@@ -61,17 +65,17 @@
 
     <tbody>
       <tr>
-        <td> <%= link_to @user.campaigns.first.title, @user.campaigns.first %> </td>
-        <td> <%= link_to @user.campaigns.first.discussion.title, @user.campaigns.first.discussion %> </td>
+        <td> <%= link_to @user.campaign.title, @user.campaign %> </td>
+        <td> <%= link_to @user.campaign.discussion.title, @user.campaign.discussion %> </td>
         <td> 
-          <%= link_to "delete campaign", @user.campaigns.first, 
+          <%= link_to "delete campaign", @user.campaign, 
                 method: :delete,
                 data: { confirm: "You sure?" } %>
         <td>
       </tr>
     </tbody> 
   </table>
-  	<% if current_user?(@user.campaigns.first.user) %>
+  	<% if current_user?(@user.campaign.user) %>
   		<span>
       </span>
   	<% end %>

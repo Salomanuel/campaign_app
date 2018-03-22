@@ -18,7 +18,7 @@ class CampaignsController < ApplicationController
   end
 
   def create
-    @campaign = current_user.campaigns.build(campaign_params)
+    @campaign = current_user.build_campaign(campaign_params)
     @discussions = Discussion.all.map{ |a| [a.title, a.id] }
     if @campaign.save
       flash[:success] = "Campaign created!"
@@ -41,7 +41,7 @@ class CampaignsController < ApplicationController
     end
 
     def correct_user
-      @campaign = current_user.campaigns.first
+      @campaign = current_user.campaign
       # redirect_to current_user if @campaign.nil?
     end
 end
