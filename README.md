@@ -26,6 +26,7 @@ It has a seeded database
 - while creating `campaigns` errors are not shown properly
 - comments user `hidden_fields` to set the owner, I don't like that and there are more safe ways to implement it
 - add more `seeds`, like `Comments` 
+- seeds should be updated to create `Campaigns` and `Discussions`
 
 ### Tests
 

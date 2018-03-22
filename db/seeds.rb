@@ -42,20 +42,25 @@ end
 # discussions
 
 10.times do |i|
-  Discussion.create(title: "Discussion #{i}")
+  user = User.last
+  # we only want novice users that don't have discussions yet
+  while user.expert? or not user.discussion.nil?
+    user = User.all[rand(User.count)]
+  end
+  Discussion.create(title: "Discussion #{i}", user: user)
 end
 
 
 
 # campaigns
 
-title = Faker::Lorem.sentence(5)
-User.first.campaigns.create(title: title,
-                            purpose: "multipurpose",
-                            discussion_id: 1 )
+# title = Faker::Lorem.sentence(5)
+# User.first.campaigns.create(title: title,
+#                             purpose: "multipurpose",
+#                             discussion_id: 1 )
 
-10.times do |i|
-  User.all[i].campaigns.create(title: "Campaign #{i}",
-                               purpose: "multipurpose",
-                               discussion_id: rand(10) )
-end
+# 10.times do |i|
+#   User.all[i].campaigns.create(title: "Campaign #{i}",
+#                                purpose: "multipurpose",
+#                                discussion_id: rand(10) )
+# end
