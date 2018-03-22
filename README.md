@@ -35,6 +35,7 @@ It has a seeded database
 
 ## To Fix
 
+
 - the flash keeps flashing when it shouldn't anymore, it's something with the redirects and renders and refreshes, easy to fix
-- `User has_one Campaign` wasn't working and as a quick fix I set it to `User has_many Campaigns`
-- because of `User has_many Campaigns`, `User#show` users a lame `@campaign.first` that should be addressed
+- ~~`User has_one Campaign` wasn't working and as a quick fix I set it to `User has_many Campaigns`~~
+- ~~because of `User has_many Campaigns`, `User#show` users a lame `@campaign.first` that should be addressed~~
