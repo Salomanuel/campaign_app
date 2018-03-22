@@ -2,6 +2,9 @@
 
 To create a campaign, log in and enter the user#show page (click the Username located in the top right corner)
 
+It has a seeded database   
+`$ heroku db:seed` will seed the production database
+
 ## To Implement 
 
 - dynamic html titles for all the pages
@@ -21,6 +24,7 @@ To create a campaign, log in and enter the user#show page (click the Username lo
 - add way more `validations`, like with `estimate_duration`
 - while creating `campaigns` errors are not shown properly
 - comments user `hidden_fields` to set the owner, I don't like that and there are more safe ways to implement it
+- add more `seeds`, like `Comments` 
 
 ### Tests
 
