@@ -80,8 +80,10 @@
 <h3>Discussion</h3>
   <% if @user.discussion.nil? %>
     <p>This user doesn't have any Discussions yet</p>
-    <h3>Create Discussion</h3>
-    <%= render 'shared/discussion_form' %>
+    <% if @user == current_user %>
+      <h3>Create Discussion</h3>
+      <%= render 'shared/discussion_form' %>
+    <% end %>
   <% else %>
     <table>
       <thead>
